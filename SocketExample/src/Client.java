@@ -12,5 +12,6 @@ public class Client {
 
     public static void main(String[] args) throws IOException {
         new Client("127.0.0.1",9090);
+        new Client("127.0.0.1",9091);
     }
 }

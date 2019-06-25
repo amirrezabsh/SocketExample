@@ -16,6 +16,7 @@ public class Server {
 
     public static void main(String[] args) throws IOException {
         new Server(9090);
+        new Server(9091);
 
     }
 }

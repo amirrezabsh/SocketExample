@@ -16,7 +16,7 @@ public class ClientManager implements Runnable{
 
     @Override
     public void run() {
-        String message = "hello";
+        String message = "Hey! ";
         writer.println(message);
         writer.flush();
         try {
