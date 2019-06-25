@@ -1,43 +1,40 @@
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.net.ServerSocket;
 import java.net.Socket;
+import java.security.PrivilegedExceptionAction;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Connection implements Runnable {
 
     private String host;
     private int port;
-    private PrintWriter os;
+    private DataOutputStream dataOutputStream;
+    private DataInputStream dataInputStream;
+    private PrintWriter writer;
+    private Socket socket;
+    private InputStream inputStream;
+    private OutputStream outputStream;
+    private Socket serverSocket;
+    private volatile boolean running = true;
 
-    private volatile boolean running = false;
-    private ConcurrentLinkedQueue<String> queue;
-
-    public Connection(String host, int port) {
-        this.host = host;
-        this.port = port;
-        this.queue = new ConcurrentLinkedQueue<String>();
-    };
-
-    public void start() {
-        try {
-            this.os = new PrintWriter(new Socket(host, port).getOutputStream());
-        } catch (IOException e) {
-            return;
-        }
-
-        running = true;
-        new Thread(this).start();
+    public Connection(Socket socket) throws IOException {
+        this.serverSocket = socket;
+        inputStream= serverSocket.getInputStream();
+        outputStream = serverSocket.getOutputStream();
+        dataInputStream = new DataInputStream(inputStream);
+        writer = new PrintWriter(outputStream);
     }
-
     @Override
-    public void run() {
+    public synchronized void run() {
+        try {
+            String message = dataInputStream.readLine();
+            writer.println(message + "Hello buddy");
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        while(true) {
 
-        while(running) {
-            // send messages in queue
-            while(!queue.isEmpty()) {
-                os.print(queue.poll());
-            }
-            // wait to be notified about new messages
             try {
                 this.wait();
             } catch (InterruptedException e) {
@@ -46,16 +43,14 @@ public class Connection implements Runnable {
         }
     }
 
-    public synchronized void sendMessage(String msg) {
-        queue.add(msg);
-        this.notify();
-    }
-
     public void terminate() {
         running = false;
     }
 
     public boolean isRunning() {
         return running;
+    }
+    public synchronized void getMessage(){
+
     }
 }
