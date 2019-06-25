@@ -26,21 +26,7 @@ public class Connection implements Runnable {
     }
     @Override
     public synchronized void run() {
-        try {
-            String message = dataInputStream.readLine();
-            writer.println(message + "Hello buddy");
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        while(true) {
 
-            try {
-                this.wait();
-            } catch (InterruptedException e) {
-                terminate();
-            }
-        }
     }
 
     public void terminate() {

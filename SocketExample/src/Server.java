@@ -1,6 +1,7 @@
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Server {
@@ -15,8 +16,13 @@ public class Server {
     }
 
     public static void main(String[] args) throws IOException {
-        new Server(9090);
-        new Server(9091);
+        ArrayList <Integer> PortList = new ArrayList<>();
+        PortList.add(9090);
+        PortList.add(9091);
+        ArrayList <Server> ServerList = new ArrayList<>();
+        for (int i = 0; i < PortList.size(); i++) {
+            ServerList.add(new Server(PortList.get(i)));
+        }
 
     }
 }

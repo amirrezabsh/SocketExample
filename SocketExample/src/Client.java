@@ -1,5 +1,6 @@
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Client {
@@ -11,7 +12,14 @@ public class Client {
     }
 
     public static void main(String[] args) throws IOException {
-        new Client("127.0.0.1",9090);
-        new Client("127.0.0.1",9091);
+        ArrayList <String> IPList = new ArrayList<>();
+        ArrayList <Integer> PortList = new ArrayList<>();
+        IPList.add("127.0.0.1");
+        IPList.add("127.0.0.1");
+        PortList.add(9090);
+        PortList.add(9091);
+        for (int i = 0; i <IPList.size() ; i++) {
+            new Client(IPList.get(i),PortList.get(i));
+        }
     }
 }
