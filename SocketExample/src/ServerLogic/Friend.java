@@ -1,3 +1,5 @@
+package ServerLogic;
+
 public class Friend {
     private String ip;
     private int port;
