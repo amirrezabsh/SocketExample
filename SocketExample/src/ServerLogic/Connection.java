@@ -1,17 +1,16 @@
 package ServerLogic;
 
+import javax.swing.*;
 import java.io.*;
-import java.net.ServerSocket;
 import java.net.Socket;
-import java.security.PrivilegedExceptionAction;
 import java.util.ArrayList;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.LinkedList;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 public class Connection implements Runnable {
 
     private String host;
+    private String title;
     private int port;
     private DataOutputStream dataOutputStream;
     private DataInputStream dataInputStream;
@@ -21,10 +20,13 @@ public class Connection implements Runnable {
     private OutputStream outputStream;
     private Socket clientSocket;
     private int size;
-    private String title;
-    private volatile boolean running = true;
-    private ArrayList <String> sharedList = new ArrayList<>();
-    private CountDownLatch latch = new CountDownLatch(1);
+    private ArrayList <File> sharedList = new ArrayList<>();
+    private File sharedMusic ;
+
+    public void setSharedMusic(File sharedMusic) {
+
+        this.sharedMusic = sharedMusic;
+    }
 
     public Connection(Socket socket) throws IOException {
         this.clientSocket = socket;
@@ -54,28 +56,31 @@ public class Connection implements Runnable {
         }
 
     }
-
-    public ArrayList<String> getSharedList() {
+    public File addMusic () throws IOException {
+        JFileChooser f=new JFileChooser();
+        f. showSaveDialog (null) ;
+        String path=f.getSelectedFile().getAbsolutePath ();
+        File song = new File(path);
+        for (int i = 0; i <sharedList.size() ; i++) {
+            if (sharedList.get(i)==song){
+                return song;
+            }
+        }
+        sharedList.add(song);
+        FileInputStream file = new FileInputStream(path);
+        int size = (int)song.length();
+        file.skip(size - 128);
+        byte[] last128 = new byte[128];
+        file.read(last128);
+        String id3 = new String(last128);
+        this.title = id3.substring(3,32);
+        sharedList.add(title);
+        file.close();
+        return song;
+    }
+    public ArrayList<File> getSharedList() {
         return sharedList;
     }
 
-    public void terminate() {
-        running = false;
-    }
 
-    public boolean isRunning() {
-        return running;
-    }
-    public synchronized void getMessage(){
-
-    }
-    public boolean waitForResponse() throws InterruptedException {
-        boolean result = latch.await(10, TimeUnit.SECONDS);
-        return result;
-        // check result and react correspondingly
-    }
-
-    public void notifyOKCommandReceived() {
-        latch.countDown();
-    }
 }
