@@ -176,7 +176,7 @@
   </component>
   <component name="RunManager" selected="Application.Client">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Client" />
+      <option name="MAIN_CLASS_NAME" value="ServerLogic.Client" />
       <module name="SocketExample" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -193,7 +193,7 @@
       </method>
     </configuration>
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Server" />
+      <option name="MAIN_CLASS_NAME" value="ServerLogic.Server" />
       <module name="SocketExample" />
       <method v="2">
         <option name="Make" enabled="true" />
