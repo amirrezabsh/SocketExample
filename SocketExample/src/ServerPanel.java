@@ -11,7 +11,7 @@ import java.security.Key;
 
 import static java.awt.image.ImageObserver.ABORT;
 
-public class ServerPanel extends JComponent implements Accessible, ActionListener {
+public class ServerPanel extends JPanel implements ActionListener {
     private JPanel serverPanel;
     private JLabel label;
     private JButton addFriend;
