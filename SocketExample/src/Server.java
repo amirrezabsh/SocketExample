@@ -9,20 +9,20 @@ public class Server {
     static Socket client;
     public Server(int port) throws IOException {
         mserver= new ServerSocket(port);
-        client = mserver.accept();
-        System.out.println("Client connected");
-        Thread thread = new Thread(new Connection(client));
-        thread.start();
+        while (true) {
+            client = mserver.accept();
+            System.out.println(" New client connected");
+            Thread thread = new Thread(new Connection(client));
+            thread.start();
+        }
     }
 
+
+
+
     public static void main(String[] args) throws IOException {
-        ArrayList <Integer> PortList = new ArrayList<>();
-        PortList.add(9090);
-        PortList.add(9091);
         ArrayList <Server> ServerList = new ArrayList<>();
-        for (int i = 0; i < PortList.size(); i++) {
-            ServerList.add(new Server(PortList.get(i)));
-        }
+
 
     }
 }
