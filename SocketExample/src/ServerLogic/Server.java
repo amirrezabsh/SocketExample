@@ -13,7 +13,7 @@ public class Server {
         while (true) {
             client = mserver.accept();
             System.out.println(" New client connected");
-            Thread thread = new Thread(new Connection(client));
+            Thread thread = new Thread(new ServerManager(client));
             thread.start();
         }
     }
