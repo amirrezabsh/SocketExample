@@ -15,6 +15,7 @@ public class ServerManager implements Runnable {
     private DataInputStream dataInputStream;
     private InputStream inputStream;
     private OutputStream outputStream;
+    private FileOutputStream fileOutputStream;
     private Socket clientSocket;
     private String songName;
     private ArrayList<File> sharedList = new ArrayList<>();
@@ -31,33 +32,26 @@ public class ServerManager implements Runnable {
     @Override
     public synchronized void run() {
         try {
-            songName = dataInputStream.readLine();
+            fileInputStream = new FileInputStream(sharedMusic);
+            int size = (int) sharedMusic.length();
+            byte[] file = new byte[size];
+            fileInputStream.skip(size - 128);
+            byte[] last128 = new byte[128];
+            fileInputStream.read(last128);
+            String id3 = new String(last128);
+            this.title = id3.substring(3, 32);
+            dataOutputStream.writeChars("Amir :" + title);
+            dataOutputStream.writeChars(title);
+            byte[] mybytearray = new byte[(int) sharedMusic.length()];
+            BufferedInputStream bis = new BufferedInputStream(new FileInputStream(sharedMusic));
+            bis.read(mybytearray, 0, mybytearray.length);
+            outputStream.write(mybytearray, 0, mybytearray.length);
+            outputStream.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        for (int i = 0; i < sharedList.size(); i++) {
-            try {
-                fileInputStream = new FileInputStream(sharedList.get(i));
-                int size = (int) sharedList.get(i).length();
-                byte[] file = new byte[size];
-                fileInputStream.skip(size - 128);
-                byte[] last128 = new byte[128];
-                fileInputStream.read(last128);
-                String id3 = new String(last128);
-                this.title = id3.substring(3, 32);
-                if (this.title == songName) {
-                    fileInputStream.read(file);
-                    dataOutputStream.write(file);
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-
     }
+
 
     public File addMusic() throws IOException {
         JFileChooser f = new JFileChooser();
@@ -72,17 +66,21 @@ public class ServerManager implements Runnable {
         sharedList.add(song);
         return song;
     }
-    public void removeMusic (File file){
-        for (int i = 0; i <sharedList.size() ; i++) {
-            if (sharedList.get(i)==file){
+
+    public void removeMusic(File file) {
+        for (int i = 0; i < sharedList.size(); i++) {
+            if (sharedList.get(i) == file) {
                 sharedList.remove(i);
                 return;
             }
         }
     }
+
     public ArrayList<File> getSharedList() {
         return sharedList;
     }
 
-
+    public void setSharedMusic(File sharedMusic) {
+        this.sharedMusic = sharedMusic;
+    }
 }

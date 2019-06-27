@@ -5,8 +5,9 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class ClientManager implements Runnable{
+public class ClientManager implements Runnable {
     private Socket serverSocket;
+    private String serverActivity;
     private String title;
     private PrintWriter writer;
     private FileInputStream fileInputStream;
@@ -14,25 +15,26 @@ public class ClientManager implements Runnable{
     private InputStream inputStream;
     private BufferedOutputStream bufferedOutputStream;
     private DataInputStream dataInputStream;
-    private ArrayList <String> sharedList = new ArrayList<>();
-    private ArrayList <File> sharedListFile = new ArrayList<>();
+    private ArrayList<String> sharedList = new ArrayList<>();
+    private ArrayList<File> sharedListFile = new ArrayList<>();
+
     public ClientManager(Socket socket) throws IOException {
         serverSocket = socket;
         inputStream = serverSocket.getInputStream();
         dataInputStream = new DataInputStream(serverSocket.getInputStream());
-        writer= new PrintWriter(serverSocket.getOutputStream());
+        writer = new PrintWriter(serverSocket.getOutputStream());
     }
 
     @Override
     public void run() {
-        writer.println(title);
-        writer.flush();
         try {
-            byte[] myByteArray=new byte[1024] ;
-            fileOutputStream= new FileOutputStream(title+".mp3");
+            serverActivity = dataInputStream.readLine();
+            title = dataInputStream.readLine();
+            byte[] myByteArray = new byte[1024];
+            fileOutputStream = new FileOutputStream("C:\\Users\\ASUS\\Documents\\GitHub\\SocketExample\\Musics\\"+title + ".mp3");
             bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
-            int bytesRead = inputStream.read(myByteArray,0,myByteArray.length);
-            bufferedOutputStream.write(myByteArray,0,bytesRead);
+            int bytesRead = inputStream.read(myByteArray, 0, myByteArray.length);
+            bufferedOutputStream.write(myByteArray, 0, bytesRead);
             bufferedOutputStream.flush();
             bufferedOutputStream.close();
         } catch (IOException e) {
@@ -44,10 +46,11 @@ public class ClientManager implements Runnable{
         this.title = title;
     }
 
-    public byte[] fileToByte (File file) throws IOException {
-        FileInputStream f = new FileInputStream(file);
-        byte [] fileToByte = new byte[(int) file.length()];
-        f.read(fileToByte);
-        return fileToByte;
+    public String getTitle() {
+        return title;
+    }
+
+    public String getServerActivity() {
+        return serverActivity;
     }
 }

@@ -10,13 +10,16 @@ public class Client {
     private Socket serverSocket;
     private ArrayList<Friend> friends = new ArrayList<>();
     private Path savePath = FileSystems.getDefault().getPath("C:\\Users\\ASUS\\Documents\\GitHub\\SocketExample\\Server saved data\\", "friendsInfo.ser");
+    private ClientManager clientManager;
+    private Thread thread;
 
     public Client() {
     }
 
     public Client(String IP, int port) throws IOException {
         serverSocket = new Socket(IP, port);
-        Thread thread = new Thread(new ClientManager(serverSocket));
+        clientManager=new ClientManager(serverSocket);
+        thread = new Thread(clientManager);
         thread.start();
     }
 
@@ -36,6 +39,10 @@ public class Client {
         Serialization.serialize(friends, savePath);
     }
 
+    public ClientManager getClientManager() {
+        return clientManager;
+    }
+
     public void loadFreindsList() throws IOException, ClassNotFoundException {
         friends.clear();
         Object obj = Serialization.deserialize(savePath);
@@ -53,4 +60,7 @@ public class Client {
         return friends;
     }
 
+    public Thread getThread() {
+        return thread;
+    }
 }
