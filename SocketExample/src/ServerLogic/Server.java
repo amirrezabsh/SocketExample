@@ -8,13 +8,17 @@ import java.util.ArrayList;
 public class Server {
     private static ServerSocket mserver;
     static Socket client;
+    private Thread thread;
     public Server(int port) throws IOException {
         mserver= new ServerSocket(port);
         while (true) {
             client = mserver.accept();
             System.out.println(" New client connected");
-            Thread thread = new Thread(new ServerManager(client));
-            thread.start();
+            thread = new Thread(new ServerManager(client));
         }
+    }
+
+    public Thread getThread() {
+        return thread;
     }
 }

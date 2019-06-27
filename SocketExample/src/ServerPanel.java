@@ -19,6 +19,8 @@ import static java.awt.image.ImageObserver.ABORT;
 
 public class ServerPanel extends JPanel implements ActionListener {
     private JPanel serverPanel;
+    private int counter =0;
+    private ArrayList <Server> serverList = new ArrayList<>();
     private String title;
     private int buttonIndex;
     private File musicFile;
@@ -70,7 +72,6 @@ public class ServerPanel extends JPanel implements ActionListener {
         friendInformation.setBackground(Color.GREEN);
         JPanel friendInfoPanel = new JPanel();
         friendInformation.add(friendInfoPanel);
-//        friendInfoPanel.setVisible(true);
         friendInfoPanel.setBounds(40, 80, 200, 200);
         friendInfoPanel.setLayout(new BoxLayout(friendInfoPanel, BoxLayout.Y_AXIS));
         JLabel namelablel = new JLabel("Enter name:");
@@ -92,29 +93,27 @@ public class ServerPanel extends JPanel implements ActionListener {
                     client.addFriend(name.getText(), ip.getText(), Integer.parseInt(port.getText()));
                     if (name.getText().length() != 0 && ip.getText().length() != 0 && port.getText().length() != 0)
                         friendInformation.dispose();
-                    for (int i = 0; i < client.getFriends().size(); i++) {
-                        try {
-                            friendActibvity.add(new JButton());
-                            clientList.add(new Client(client.getFriends().get(i).getIp(), client.getFriends().get(i).getPort()));
-                            clientManagerList.add(clientList.get(i).getClientManager());
-                            friendActibvity.get(i).setText(clientManagerList.get(i).getServerActivity());
-                            clientList.get(i).getThread().wait();
-                            serverPanel.add(friendActibvity.get(i));
-                            buttonIndex = i;
-                            friendActibvity.get(i).addActionListener(new ActionListener() {
-                                @Override
-                                public void actionPerformed(ActionEvent e) {
-                                    clientList.get(buttonIndex).getThread().notify();
-                                    title = clientManagerList.get(buttonIndex).getTitle();
-                                    musicFile = new File("C:\\Users\\ASUS\\Documents\\GitHub\\SocketExample\\Musics\\" + title + ".mp3");
-                                }
-                            });
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-                        } catch (IOException ex) {
-                            ex.printStackTrace();
-                        }
-
+                    try {
+                        friendActibvity.add(new JButton());
+                        serverList.add(new Server(client.getFriends().get(counter).getPort()));
+                        clientList.add(new Client(client.getFriends().get(counter).getIp(), client.getFriends().get(counter).getPort()));
+                        clientManagerList.add(clientList.get(counter).getClientManager());
+                            serverList.get(counter).getThread().start();
+                            clientList.get(counter).getThread().start();
+                            friendActibvity.get(counter).setText(clientManagerList.get(counter).getServerActivity());
+                        friendActibvity.get(counter).setText("fuck you");
+                        serverPanel.add(friendActibvity.get(counter));
+                        buttonIndex = counter;
+                        counter++;
+                        friendActibvity.get(counter).addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                title = clientManagerList.get(buttonIndex).getTitle();
+                                musicFile = new File("C:\\Users\\ASUS\\Documents\\GitHub\\SocketExample\\Musics\\" + title + ".mp3");
+                            }
+                        });
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
                     }
                 }
             }

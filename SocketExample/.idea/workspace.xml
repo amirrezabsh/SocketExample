@@ -3,14 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="4bb4b5ff-77c2-4346-bc53-22e0beff7ae5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SocketExample/Serialization.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SocketExample/ServerLogic/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocketExample/ServerLogic/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SocketExample/ServerLogic/Friend.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocketExample/ServerLogic/Friend.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SocketExample/ServerPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocketExample/ServerPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SocketExample/ServerPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocketExample/ServerPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocketExample/ServerLogic/ClientManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocketExample/ServerLogic/ClientManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocketExample/ServerLogic/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocketExample/ServerLogic/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocketExample/ServerLogic/ServerManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocketExample/ServerLogic/ServerManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocketExample/ServerPanel$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocketExample/ServerPanel.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ServerLogic/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServerLogic/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ServerLogic/ClientManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServerLogic/ClientManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ServerLogic/ServerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServerLogic/ServerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ServerLogic/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServerLogic/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ServerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServerPanel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -28,12 +28,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ServerLogic/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="62" column="31" selection-start-line="62" selection-start-column="31" selection-end-line="62" selection-end-column="31" />
+            <state relative-caret-position="192">
+              <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
               <folding>
                 <element signature="e#1306#1307#0" expanded="true" />
                 <element signature="e#1342#1343#0" expanded="true" />
-                <element signature="e#1959#1960#0" expanded="true" />
+                <element signature="e#1935#1936#0" expanded="true" />
+                <element signature="e#1992#1993#0" expanded="true" />
                 <element signature="e#2021#2022#0" expanded="true" />
               </folding>
             </state>
@@ -44,21 +45,21 @@
         <entry file="file://$PROJECT_DIR$/src/ServerLogic/Serialization.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="202">
-              <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+              <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ServerPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="104" column="41" lean-forward="true" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="41" />
+            <state relative-caret-position="634">
+              <caret line="106" column="34" selection-start-line="106" selection-start-column="34" selection-end-line="106" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3336#5111#0" expanded="true" />
-                <element signature="e#5110#5111#0" expanded="true" />
-                <element signature="e#5519#5520#0" expanded="true" />
+                <element signature="e#3383#5310#0" expanded="true" />
+                <element signature="e#5309#5310#0" expanded="true" />
+                <element signature="e#5541#5542#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -67,7 +68,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ServerLogic/ClientManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
+            <state relative-caret-position="621">
               <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
               <folding>
                 <element signature="e#1704#1705#0" expanded="true" />
@@ -83,7 +84,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ServerLogic/ServerManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="340">
               <caret line="43" column="45" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
               <folding>
                 <element signature="e#2644#2645#0" expanded="true" />
@@ -95,11 +96,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ServerLogic/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+            <state relative-caret-position="243">
+              <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+              <folding>
+                <element signature="e#584#585#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -150,18 +154,18 @@
         <option value="$PROJECT_DIR$/src/ServerLogic/Friend.java" />
         <option value="$PROJECT_DIR$/src/ServerLogic/Serialization.java" />
         <option value="$PROJECT_DIR$/src/ServerLogic/ServerManager.java" />
-        <option value="$PROJECT_DIR$/src/ServerLogic/Server.java" />
         <option value="$PROJECT_DIR$/src/ServerLogic/ClientManager.java" />
-        <option value="$PROJECT_DIR$/src/ServerLogic/Client.java" />
         <option value="$PROJECT_DIR$/src/ServerPanel.java" />
+        <option value="$PROJECT_DIR$/src/ServerLogic/Client.java" />
+        <option value="$PROJECT_DIR$/src/ServerLogic/Server.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
+    <option name="x" value="540" />
+    <option name="y" value="280" />
     <option name="width" value="1100" />
-    <option name="height" value="1105" />
+    <option name="height" value="1104" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -260,7 +264,7 @@
       <workItem from="1561447582149" duration="45000" />
       <workItem from="1561447676304" duration="9733000" />
       <workItem from="1561488057893" duration="21265000" />
-      <workItem from="1561568117742" duration="25524000" />
+      <workItem from="1561568117742" duration="29083000" />
     </task>
     <task id="LOCAL-00001" summary="socket example created">
       <created>1561447729088</created>
@@ -346,11 +350,18 @@
       <option name="project" value="LOCAL" />
       <updated>1561625494723</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Add friend modified and friend's activity added">
+      <created>1561637591613</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1561637591613</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56567000" />
+    <option name="totallyTimeSpent" value="60126000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -403,7 +414,8 @@
     <MESSAGE value="Client's thread completed" />
     <MESSAGE value="Serialization added" />
     <MESSAGE value="Serializej editing feature fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Serializej editing feature fixed" />
+    <MESSAGE value="Add friend modified and friend's activity added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add friend modified and friend's activity added" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/.gitignore">
@@ -451,46 +463,13 @@
     <entry file="file://$PROJECT_DIR$/src/ServerLogic/Serialization.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
-          <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ServerLogic/ServerManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="43" column="45" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
-          <folding>
-            <element signature="e#2644#2645#0" expanded="true" />
-            <element signature="e#2677#2678#0" expanded="true" />
-            <element signature="e#2729#2730#0" expanded="true" />
-            <element signature="e#2775#2776#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ServerLogic/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ServerLogic/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="62" column="31" selection-start-line="62" selection-start-column="31" selection-end-line="62" selection-end-column="31" />
-          <folding>
-            <element signature="e#1306#1307#0" expanded="true" />
-            <element signature="e#1342#1343#0" expanded="true" />
-            <element signature="e#1959#1960#0" expanded="true" />
-            <element signature="e#2021#2022#0" expanded="true" />
-          </folding>
+          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ServerLogic/ClientManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
+        <state relative-caret-position="621">
           <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
           <folding>
             <element signature="e#1704#1705#0" expanded="true" />
@@ -502,15 +481,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ServerLogic/ServerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="43" column="45" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
+          <folding>
+            <element signature="e#2644#2645#0" expanded="true" />
+            <element signature="e#2677#2678#0" expanded="true" />
+            <element signature="e#2729#2730#0" expanded="true" />
+            <element signature="e#2775#2776#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ServerPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="104" column="41" lean-forward="true" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="41" />
+        <state relative-caret-position="634">
+          <caret line="106" column="34" selection-start-line="106" selection-start-column="34" selection-end-line="106" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3336#5111#0" expanded="true" />
-            <element signature="e#5110#5111#0" expanded="true" />
-            <element signature="e#5519#5520#0" expanded="true" />
+            <element signature="e#3383#5310#0" expanded="true" />
+            <element signature="e#5309#5310#0" expanded="true" />
+            <element signature="e#5541#5542#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ServerLogic/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding>
+            <element signature="e#1306#1307#0" expanded="true" />
+            <element signature="e#1342#1343#0" expanded="true" />
+            <element signature="e#1935#1936#0" expanded="true" />
+            <element signature="e#1992#1993#0" expanded="true" />
+            <element signature="e#2021#2022#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ServerLogic/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+          <folding>
+            <element signature="e#584#585#0" expanded="true" />
           </folding>
         </state>
       </provider>

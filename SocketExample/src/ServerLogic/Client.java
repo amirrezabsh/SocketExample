@@ -20,7 +20,6 @@ public class Client {
         serverSocket = new Socket(IP, port);
         clientManager=new ClientManager(serverSocket);
         thread = new Thread(clientManager);
-        thread.start();
     }
 
     public void addFriend(String name, String ip, int port) {
