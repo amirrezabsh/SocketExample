@@ -1,11 +1,6 @@
+package ServerLogic;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -24,6 +19,8 @@ public class Serialization {
              ObjectInputStream ois = new ObjectInputStream(is)) {
 
             Object deserializedObject = ois.readObject();
+            File file = new File(String.valueOf(filePath));
+            file.delete();
             return deserializedObject;
 
         }
@@ -31,8 +28,8 @@ public class Serialization {
     }
 
     public static void serialize(Serializable toSer, Path filePath) {
-
-        try (OutputStream os = Files.newOutputStream(filePath);
+        try (
+                OutputStream os = Files.newOutputStream(filePath);
              ObjectOutputStream oos = new ObjectOutputStream(os)) {
             oos.writeObject(toSer);
 
@@ -40,7 +37,7 @@ public class Serialization {
             System.out.printf("Could not save file " + filePath);
             e.printStackTrace();
         } catch (IOException e) {
-            System.out.printf("Serialization does not work");
+            System.out.printf("ServerLogic.Serialization does not work");
             e.printStackTrace();
         }
 
