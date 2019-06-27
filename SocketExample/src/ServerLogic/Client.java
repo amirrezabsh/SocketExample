@@ -22,6 +22,8 @@ public class Client {
 
     public Client () throws IOException, ClassNotFoundException {
         Client nioServer = new Client();
+        serverSocket = new Socket("192.168.1.9",9090);
+        clientManager = new ClientManager(serverSocket);
         SocketChannel socketChannel = nioServer.createServerSocketChannel();
         nioServer.readFileFromSocket(socketChannel);
     }
@@ -48,6 +50,9 @@ public class Client {
      *
      * @param socketChannel
      */
+    public void sendMassage (SocketChannel socketChannel){
+
+    }
     public void readFileFromSocket(SocketChannel socketChannel) throws IOException, ClassNotFoundException {
         RandomAccessFile aFile = null;
         try {
@@ -72,45 +77,5 @@ public class Client {
             e.printStackTrace();
         }
 
-    }
-    public void addFriend (String name,String ip,int port){
-        boolean isSame = false;
-        for (int i = 0; i < friends.size(); i++) {
-            if (friends.get(i).getName().equals(name)) {
-                friends.get(i).setIp(ip);
-                friends.get(i).setPort(port);
-                isSame = true;
-            }
-        }
-        if (isSame != true) {
-            Friend friend = new Friend(ip, port, name);
-            friends.add(friend);
-        }
-        Serialization.serialize(friends, savePath);
-    }
-
-    public ClientManager getClientManager () {
-        return clientManager;
-    }
-
-    public void loadFreindsList () throws IOException, ClassNotFoundException {
-        friends.clear();
-        Object obj = Serialization.deserialize(savePath);
-        if (obj instanceof ArrayList) {
-            if ((((ArrayList) obj).get(0) instanceof Friend)) {
-                ArrayList<Friend> loadedFriendsList = (ArrayList<Friend>) obj;
-                for (int i = 0; i < loadedFriendsList.size(); i++) {
-                    friends.add(loadedFriendsList.get(i));
-                }
-            }
-        }
-    }
-
-    public ArrayList<Friend> getFriends () {
-        return friends;
-    }
-
-    public Thread getThread () {
-        return thread;
     }
 }
