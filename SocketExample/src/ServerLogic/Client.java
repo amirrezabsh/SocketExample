@@ -1,10 +1,17 @@
 package ServerLogic;
-
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.ArrayList;
+
 
 public class Client {
     private Socket serverSocket;
@@ -13,16 +20,60 @@ public class Client {
     private ClientManager clientManager;
     private Thread thread;
 
-    public Client() {
+    public Client () throws IOException, ClassNotFoundException {
+        Client nioServer = new Client();
+        SocketChannel socketChannel = nioServer.createServerSocketChannel();
+        nioServer.readFileFromSocket(socketChannel);
     }
 
-    public Client(String IP, int port) throws IOException {
-        serverSocket = new Socket(IP, port);
-        clientManager=new ClientManager(serverSocket);
-        thread = new Thread(clientManager);
+    public SocketChannel createServerSocketChannel() {
+
+        ServerSocketChannel serverSocketChannel = null;
+        SocketChannel socketChannel = null;
+        try {
+            serverSocketChannel = ServerSocketChannel.open();
+            serverSocketChannel.socket().bind(new InetSocketAddress(9090));
+            socketChannel = serverSocketChannel.accept();
+            System.out.println("Connection established...." + socketChannel.getRemoteAddress());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return socketChannel;
     }
 
-    public void addFriend(String name, String ip, int port) {
+    /**
+     * Reads the bytes from socket and writes to file
+     *
+     * @param socketChannel
+     */
+    public void readFileFromSocket(SocketChannel socketChannel) throws IOException, ClassNotFoundException {
+        RandomAccessFile aFile = null;
+        try {
+            aFile = new RandomAccessFile("Marshmello-One-Thing-Right-(Ft-Kane-Brown).mp3", "rw");
+            ByteBuffer buffer = ByteBuffer.allocate(1024);
+            FileChannel fileChannel = aFile.getChannel();
+            while (socketChannel.read(buffer) > 0) {
+                buffer.flip();
+                fileChannel.write(buffer);
+                buffer.clear();
+            }
+            Thread.sleep(1000);
+            fileChannel.close();
+            System.out.println("End of file reached..Closing channel");
+            socketChannel.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void addFriend (String name,String ip,int port){
         boolean isSame = false;
         for (int i = 0; i < friends.size(); i++) {
             if (friends.get(i).getName().equals(name)) {
@@ -31,18 +82,18 @@ public class Client {
                 isSame = true;
             }
         }
-        if (!isSame) {
+        if (isSame != true) {
             Friend friend = new Friend(ip, port, name);
             friends.add(friend);
         }
         Serialization.serialize(friends, savePath);
     }
 
-    public ClientManager getClientManager() {
+    public ClientManager getClientManager () {
         return clientManager;
     }
 
-    public void loadFreindsList() throws IOException, ClassNotFoundException {
+    public void loadFreindsList () throws IOException, ClassNotFoundException {
         friends.clear();
         Object obj = Serialization.deserialize(savePath);
         if (obj instanceof ArrayList) {
@@ -55,11 +106,11 @@ public class Client {
         }
     }
 
-    public ArrayList<Friend> getFriends() {
+    public ArrayList<Friend> getFriends () {
         return friends;
     }
 
-    public Thread getThread() {
+    public Thread getThread () {
         return thread;
     }
 }

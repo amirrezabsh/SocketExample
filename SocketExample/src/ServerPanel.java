@@ -39,12 +39,12 @@ public class ServerPanel extends JPanel implements ActionListener {
         serverPanel.setLayout(new BoxLayout(serverPanel, BoxLayout.Y_AXIS));
         serverPanel.setBounds(40, 80, 200, 200);
         serverPanel.setBackground(Color.gray);
-        JFrame jFrame = new JFrame();
-        jFrame.setSize(400, 400);
-        jFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        jFrame.setLayout(null);
-        jFrame.add(serverPanel);
-        jFrame.setVisible(true);
+//        JFrame jFrame = new JFrame();
+//        jFrame.setSize(400, 400);
+//        jFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+//        jFrame.setLayout(null);
+//        jFrame.add(serverPanel);
+//        jFrame.setVisible(true);
         label = new JLabel();
         label.setText("Friends Activity");
         serverPanel.add(label);
@@ -53,9 +53,9 @@ public class ServerPanel extends JPanel implements ActionListener {
         serverPanel.add(addFriend);
     }
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
-        ServerPanel serverPanel = new ServerPanel();
-    }
+//    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+//        ServerPanel serverPanel = new ServerPanel();
+//    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -93,28 +93,24 @@ public class ServerPanel extends JPanel implements ActionListener {
                     client.addFriend(name.getText(), ip.getText(), Integer.parseInt(port.getText()));
                     if (name.getText().length() != 0 && ip.getText().length() != 0 && port.getText().length() != 0)
                         friendInformation.dispose();
-                    try {
-                        friendActibvity.add(new JButton());
-                        serverList.add(new Server(client.getFriends().get(counter).getPort()));
-                        clientList.add(new Client(client.getFriends().get(counter).getIp(), client.getFriends().get(counter).getPort()));
-                        clientManagerList.add(clientList.get(counter).getClientManager());
-                            serverList.get(counter).getThread().start();
-                            clientList.get(counter).getThread().start();
-                            friendActibvity.get(counter).setText(clientManagerList.get(counter).getServerActivity());
-                        friendActibvity.get(counter).setText("fuck you");
-                        serverPanel.add(friendActibvity.get(counter));
-                        buttonIndex = counter;
-                        counter++;
-                        friendActibvity.get(counter).addActionListener(new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                                title = clientManagerList.get(buttonIndex).getTitle();
-                                musicFile = new File("C:\\Users\\ASUS\\Documents\\GitHub\\SocketExample\\Musics\\" + title + ".mp3");
-                            }
-                        });
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
+                    friendActibvity.add(new JButton());
+//                        serverList.add(new Server(client.getFriends().get(counter).getPort()));
+//                        clientList.add(new Client(client.getFriends().get(counter).getIp(), client.getFriends().get(counter).getPort()));
+                    clientManagerList.add(clientList.get(counter).getClientManager());
+                    serverList.get(counter).getThread().start();
+                    clientList.get(counter).getThread().start();
+                    friendActibvity.get(counter).setText(clientManagerList.get(counter).getServerActivity());
+                    friendActibvity.get(counter).setText("fuck you");
+                    serverPanel.add(friendActibvity.get(counter));
+                    buttonIndex = counter;
+                    counter++;
+                    friendActibvity.get(counter).addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            title = clientManagerList.get(buttonIndex).getTitle();
+                            musicFile = new File("C:\\Users\\ASUS\\Documents\\GitHub\\SocketExample\\Musics\\" + title + ".mp3");
+                        }
+                    });
                 }
             }
         };
