@@ -17,13 +17,4 @@ public class Server {
             thread.start();
         }
     }
-
-
-
-
-    public static void main(String[] args) throws IOException {
-        ArrayList <Server> ServerList = new ArrayList<>();
-
-
-    }
 }

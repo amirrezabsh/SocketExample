@@ -72,7 +72,14 @@ public class ServerManager implements Runnable {
         sharedList.add(song);
         return song;
     }
-
+    public void removeMusic (File file){
+        for (int i = 0; i <sharedList.size() ; i++) {
+            if (sharedList.get(i)==file){
+                sharedList.remove(i);
+                return;
+            }
+        }
+    }
     public ArrayList<File> getSharedList() {
         return sharedList;
     }
