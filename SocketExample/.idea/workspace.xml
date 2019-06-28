@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="4bb4b5ff-77c2-4346-bc53-22e0beff7ae5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ServerLogic/ClientFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServerLogic/ClientFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ServerLogic/ClientMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServerLogic/ClientMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ServerLogic/ServerMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServerLogic/ServerMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ServerLogic/SeverFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServerLogic/SeverFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ServerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServerPanel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,10 +22,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ClientFile.java">
+        <entry file="file://$PROJECT_DIR$/src/ServerLogic/ClientFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-107">
-              <caret line="16" column="72" selection-start-line="16" selection-start-column="72" selection-end-line="16" selection-end-column="72" />
+            <state relative-caret-position="624">
+              <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -28,46 +33,18 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ServerPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1581">
-              <caret line="93" column="21" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="21" />
+            <state relative-caret-position="493">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3404#6044#0" expanded="true" />
                 <element signature="e#6043#6044#0" expanded="true" />
                 <element signature="e#7045#7046#0" expanded="true" />
                 <element signature="e#7082#7083#0" expanded="true" />
-                <element signature="e#7817#7818#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ServerLogic/ClientManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="45" column="29" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
-              <folding>
-                <element signature="e#1236#1237#0" expanded="true" />
-                <element signature="e#1296#1297#0" expanded="true" />
-                <element signature="e#1354#1355#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ServerLogic/ServerManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5">
-              <caret line="24" column="29" lean-forward="true" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-              <folding>
-                <element signature="e#1297#1298#0" expanded="true" />
-                <element signature="e#1331#1332#0" expanded="true" />
-                <element signature="e#1363#1364#0" expanded="true" />
-                <element signature="e#1391#1392#0" expanded="true" />
+                <element signature="e#7378#7379#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,24 +53,34 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ServerLogic/ServerMessage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="42" selection-start-line="42" selection-end-line="46" />
+            <state relative-caret-position="34">
+              <caret line="2" column="17" lean-forward="true" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#1238#1239#0" expanded="true" />
                 <element signature="e#1267#1268#0" expanded="true" />
-                <element signature="e#1314#1315#0" expanded="true" />
-                <element signature="e#1350#1351#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/SeverFile.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ServerLogic/ClientMessage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="41" column="29" lean-forward="true" selection-start-line="38" selection-start-column="33" selection-end-line="41" selection-end-column="29" />
+            <state relative-caret-position="102">
+              <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+              <folding>
+                <element signature="e#1019#1020#0" expanded="true" />
+                <element signature="e#1048#1049#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ServerLogic/SeverFile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="26" lean-forward="true" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -152,11 +139,13 @@
         <option value="$PROJECT_DIR$/src/ServerLogic/Client.java" />
         <option value="$PROJECT_DIR$/src/ServerLogic/Server.java" />
         <option value="$PROJECT_DIR$/src/ServerLogic/ServerManager.java" />
-        <option value="$PROJECT_DIR$/src/ServerLogic/ClientMessage.java" />
-        <option value="$PROJECT_DIR$/src/ServerPanel.java" />
         <option value="$PROJECT_DIR$/src/ClientFile.java" />
         <option value="$PROJECT_DIR$/src/SeverFile.java" />
+        <option value="$PROJECT_DIR$/src/ServerPanel.java" />
         <option value="$PROJECT_DIR$/src/ServerLogic/ServerMessage.java" />
+        <option value="$PROJECT_DIR$/src/ServerLogic/ClientMessage.java" />
+        <option value="$PROJECT_DIR$/src/ServerLogic/SeverFile.java" />
+        <option value="$PROJECT_DIR$/src/ServerLogic/ClientFile.java" />
       </list>
     </option>
   </component>
@@ -283,7 +272,7 @@
       <workItem from="1561447676304" duration="9733000" />
       <workItem from="1561488057893" duration="21265000" />
       <workItem from="1561568117742" duration="33738000" />
-      <workItem from="1561651300938" duration="29894000" />
+      <workItem from="1561651300938" duration="30547000" />
     </task>
     <task id="LOCAL-00001" summary="socket example created">
       <created>1561447729088</created>
@@ -397,17 +386,24 @@
       <option name="project" value="LOCAL" />
       <updated>1561676324520</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Client and Server File moved!">
+      <created>1561726309487</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1561726309487</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94675000" />
+    <option name="totallyTimeSpent" value="95328000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.020134227" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1442953" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -458,7 +454,8 @@
     <MESSAGE value="Final changes added waiting to be tested" />
     <MESSAGE value="Server and client class changed completely" />
     <MESSAGE value="new Server and Server manager modified" />
-    <option name="LAST_COMMIT_MESSAGE" value="new Server and Server manager modified" />
+    <MESSAGE value="Client and Server File moved!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Client and Server File moved!" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/.gitignore">
@@ -489,13 +486,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ServerLogic/Friend.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
@@ -503,58 +493,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ServerLogic/ClientMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="45" column="19" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1194#1195#0" expanded="true" />
-            <element signature="e#1223#1224#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ServerLogic/ClientManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="45" column="29" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
-          <folding>
-            <element signature="e#1236#1237#0" expanded="true" />
-            <element signature="e#1296#1297#0" expanded="true" />
-            <element signature="e#1354#1355#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ServerLogic/Serialization.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-50">
           <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ClientFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-107">
-          <caret line="16" column="72" selection-start-line="16" selection-start-column="72" selection-end-line="16" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ServerPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1581">
-          <caret line="93" column="21" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6043#6044#0" expanded="true" />
-            <element signature="e#7045#7046#0" expanded="true" />
-            <element signature="e#7082#7083#0" expanded="true" />
-            <element signature="e#7817#7818#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -571,26 +513,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ServerLogic/ServerMessage.java">
+    <entry file="file://$PROJECT_DIR$/src/ServerLogic/ClientManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="42" selection-start-line="42" selection-end-line="46" />
+        <state relative-caret-position="488">
+          <caret line="45" column="29" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1238#1239#0" expanded="true" />
-            <element signature="e#1267#1268#0" expanded="true" />
-            <element signature="e#1314#1315#0" expanded="true" />
-            <element signature="e#1350#1351#0" expanded="true" />
+            <element signature="e#1236#1237#0" expanded="true" />
+            <element signature="e#1296#1297#0" expanded="true" />
+            <element signature="e#1354#1355#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SeverFile.java">
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/io/IOException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="41" column="29" lean-forward="true" selection-start-line="38" selection-start-column="33" selection-end-line="41" selection-end-column="29" />
+        <state relative-caret-position="176">
+          <caret line="35" column="15" lean-forward="true" selection-start-line="35" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ServerLogic/Friend.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ServerLogic/SeverFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="26" lean-forward="true" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ServerLogic/ClientMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+          <folding>
+            <element signature="e#1019#1020#0" expanded="true" />
+            <element signature="e#1048#1049#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ServerLogic/ClientFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ServerLogic/ServerMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="17" lean-forward="true" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+          <folding>
+            <element signature="e#1238#1239#0" expanded="true" />
+            <element signature="e#1267#1268#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ServerPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3404#6044#0" expanded="true" />
+            <element signature="e#6043#6044#0" expanded="true" />
+            <element signature="e#7045#7046#0" expanded="true" />
+            <element signature="e#7082#7083#0" expanded="true" />
+            <element signature="e#7378#7379#0" expanded="true" />
           </folding>
         </state>
       </provider>

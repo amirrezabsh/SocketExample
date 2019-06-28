@@ -21,17 +21,12 @@ public class ServerPanel extends JPanel implements ActionListener {
     private int buttonIndex;
     private File musicFile;
     private JLabel label;
-//    private Server server = new Server();
     private JButton friendButton;
     private JButton addFriend;
     private Friend friend;
     private ClientMessage clientMessage = new ClientMessage();
-//    private ArrayList<Client> clientList = new ArrayList<>();
-//    private Server friendServ/er;
-//    private ArrayList<JButton> friendActibvity = new ArrayList<>();
     private Thread serverThread;
     private SocketChannel socketChannel;
-//    private ArrayList<ClientManager> clientManagerList = new ArrayList<>();
 
     public ServerPanel() throws IOException, ClassNotFoundException, InterruptedException {
         serverPanel = new JPanel();

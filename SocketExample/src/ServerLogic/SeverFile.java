@@ -19,7 +19,6 @@ public class SeverFile {
     private static SocketChannel socketChannel;
     static Socket client;
     private static Thread thread;
-    private static ServerManager serverManager;
     private int counter=0;
     private ArrayList<String> sharedMusicList = new ArrayList<>();
 
