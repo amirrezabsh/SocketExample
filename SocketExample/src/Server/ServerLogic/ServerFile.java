@@ -1,4 +1,4 @@
-package ServerLogic;
+package Server.ServerLogic;
 
 import javax.swing.*;
 import java.io.File;
@@ -14,25 +14,27 @@ import java.nio.channels.FileChannel;
 import java.nio.channels.SocketChannel;
 import java.util.ArrayList;
 
-public class SeverFile {
-    private static ServerSocket mserver;
-    private static SocketChannel socketChannel;
+public class ServerFile {
+    private  ServerSocket mserver;
+    private  SocketChannel socketChannel;
     static Socket client;
-    private static Thread thread;
+    private  Thread thread;
     private int counter=0;
-    private ArrayList<String> sharedMusicList = new ArrayList<>();
-
-    public static void main(String[] args) throws IOException {
-        SeverFile severFile = new SeverFile();
-        SocketChannel socketChannel = severFile.createChannel();
-        severFile.sendFile(socketChannel);
-    }
-    public SocketChannel createChannel() throws IOException {
+    private ArrayList<String> pathsharedMusicList = new ArrayList<>();
+  // in bayad vaghti ejra she ke to mizani ahang daryaft she
+    // nokte kheyli mohem in ke aval bayad client ro ejra koni ke in toye server panel hast bad server ro va inke aval bayad server message ejra she toye ejraye server ha
+//    public static void main(String[] args) throws IOException {
+//        SeverFile severFile = new SeverFile();
+//        SocketChannel socketChannel = severFile.createChannel("127.0.0.1",9090);
+//        severFile.sendFile(socketChannel);
+//    }
+    //baraye sakhtan rah ertebati
+    public SocketChannel createChannel(String ipAddress,int port) throws IOException {
 
         SocketChannel socketChannel = null;
         try {
             socketChannel = SocketChannel.open();
-            SocketAddress socketAddress = new InetSocketAddress("192.168.43.49", 9091);
+            SocketAddress socketAddress = new InetSocketAddress(ipAddress, (port+1));
             socketChannel.connect(socketAddress);
             System.out.println("Connected.");
         } catch (IOException e) {
@@ -40,26 +42,9 @@ public class SeverFile {
         }
         return socketChannel;
     }
+    //baraye ferestadan file ke bayad be jaye in path az pathi estefade koni ke to laptop va to list pathSharedMusicList hast estefade koni albate motanaseb ba on ahangi ke darkhast shode
     public void sendFile(SocketChannel socketChannel) throws IOException {
         int index=-1;
-//        for (int i = 0; i <sharedMusicList.size() ; i++) {
-//            File song = new File(sharedMusicList.get(i));
-//            FileInputStream file = new FileInputStream(sharedMusicList.get(i));
-//            int size = (int)song.length();
-//            file.skip(size - 128);
-//            byte[] last128 = new byte[128];
-//            file.read(last128);
-//            String id3 = new String(last128);
-//            if (title.equals(id3.substring(3,32))){
-//                index=i;
-//                break;
-//            }
-//        }
-//        if (index==-1){
-//            System.out.println("There is no music with this title in your shared list!");
-//            return;
-//        }Charset charset = Charset.forName("ISO-8859-1");
-
         RandomAccessFile aFile = null;
         try {
             File file = new File("C:\\Users\\ASUS\\Downloads\\Music\\Marshmello-One-Thing-Right-(Ft-Kane-Brown).mp3");
@@ -84,23 +69,23 @@ public class SeverFile {
         }
 
     }
-    public String addMusic() throws IOException {
-        JFileChooser f = new JFileChooser();
-        f.showSaveDialog(null);
-        String path = f.getSelectedFile().getAbsolutePath();
-        for (int i = 0; i < sharedMusicList.size(); i++) {
-            if (sharedMusicList.get(i).equals(path)) {
+    //baraye add kardan path music ha be yek list baraye estefade az on
+    public String addMusic(String pathFile) throws IOException {
+        String path = pathFile;
+        for (int i = 0; i < pathsharedMusicList.size(); i++) {
+            if (pathsharedMusicList.get(i).equals(path)) {
                 System.out.println("You already have it");
                 return null;
             }
         }
-        sharedMusicList.add(path);
+        pathsharedMusicList.add(path);
         return path;
     }
-    public void removeMusic(File file) {
-        for (int i = 0; i < sharedMusicList.size(); i++) {
-            if (sharedMusicList.get(i).equals(file.getAbsolutePath())) {
-                sharedMusicList.remove(i);
+    //baraye pack kardan ye ahang az list shared music
+    public void removeMusic(String path) {
+        for (int i = 0; i < pathsharedMusicList.size(); i++) {
+            if (pathsharedMusicList.get(i).equals(path)) {
+                pathsharedMusicList.remove(i);
                 return;
             }
         }

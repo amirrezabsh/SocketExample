@@ -1,4 +1,4 @@
-package ServerLogic;
+package Server.ServerLogic;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -21,7 +21,7 @@ public class ClientMessage {
     public Thread getThread() {
         return thread;
     }
-
+    // baraye gerftn inke che kasi dare che chizi play mikone
     public String getMessage(SocketChannel sc) throws IOException {
         Charset charset = Charset.forName("ISO-8859-1");
         ByteBuffer b = ByteBuffer.allocate(32);
@@ -32,14 +32,14 @@ public class ClientMessage {
         sc.close();
         return message;
     }
-
-    public SocketChannel createServerSocketChannel() {
+// baraye sakhtan kanal ertebati
+    public SocketChannel createServerSocketChannel(int port) {
 
         ServerSocketChannel serverSocketChannel = null;
         SocketChannel socketChannel = null;
         try {
             serverSocketChannel = ServerSocketChannel.open();
-            serverSocketChannel.socket().bind(new InetSocketAddress(9090));
+            serverSocketChannel.socket().bind(new InetSocketAddress(port));
             socketChannel = serverSocketChannel.accept();
             System.out.println("Connection established...." + socketChannel.getRemoteAddress());
 

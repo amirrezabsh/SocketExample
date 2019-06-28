@@ -1,4 +1,4 @@
-package ServerLogic;
+package Server.ServerLogic;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,12 +10,14 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 
 public class ClientFile {
-    public SocketChannel createServerSocketChannel() {
+    private int counter;
+    // baraye sakhtan kanal ertebati
+    public SocketChannel createServerSocketChannel(int port) {
         ServerSocketChannel serverSocketChannel = null;
         SocketChannel socketChannel = null;
         try {
             serverSocketChannel = ServerSocketChannel.open();
-            serverSocketChannel.socket().bind(new InetSocketAddress(9091));
+            serverSocketChannel.socket().bind(new InetSocketAddress((port+1)));
             socketChannel = serverSocketChannel.accept();
             System.out.println("Connection established...." + socketChannel.getRemoteAddress());
         } catch (IOException e) {
@@ -23,12 +25,12 @@ public class ClientFile {
         }
         return socketChannel;
     }
-
+// baraye gereftn file
 
     public void readFileFromSocket(SocketChannel socketChannel) throws IOException, ClassNotFoundException {
         RandomAccessFile aFile = null;
         try {
-            aFile = new RandomAccessFile("Marshmello-One-Thing-Right-(Ft-Kane-Brown).mp3", "rw");
+            aFile = new RandomAccessFile("MusicNumber"+counter+".mp3", "rw");
             ByteBuffer buffer = ByteBuffer.allocate(1024);
             FileChannel fileChannel = aFile.getChannel();
             while (socketChannel.read(buffer) > 0) {
@@ -48,5 +50,9 @@ public class ClientFile {
             e.printStackTrace();
         }
 
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
     }
 }

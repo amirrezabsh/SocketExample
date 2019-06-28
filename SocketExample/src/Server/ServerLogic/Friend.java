@@ -1,4 +1,4 @@
-package ServerLogic;
+package Server.ServerLogic;
 
 public class Friend implements java.io.Serializable{
     private String ip;
