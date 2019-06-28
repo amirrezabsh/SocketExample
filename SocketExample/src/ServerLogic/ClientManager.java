@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class ClientManager implements Runnable {
     private Socket serverSocket;
-    private String serverActivity;
+    private String name;
     private String title;
     private PrintWriter writer;
     private FileInputStream fileInputStream;
@@ -28,15 +28,8 @@ public class ClientManager implements Runnable {
     @Override
     public void run() {
         try {
-            serverActivity = dataInputStream.readLine();
+            name = dataInputStream.readLine();
             title = dataInputStream.readLine();
-            byte[] myByteArray = new byte[1024];
-            fileOutputStream = new FileOutputStream("C:\\Users\\ASUS\\Documents\\GitHub\\SocketExample\\Musics\\"+title + ".mp3");
-            bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
-            int bytesRead = inputStream.read(myByteArray, 0, myByteArray.length);
-            bufferedOutputStream.write(myByteArray, 0, bytesRead);
-            bufferedOutputStream.flush();
-            bufferedOutputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -50,7 +43,7 @@ public class ClientManager implements Runnable {
         return title;
     }
 
-    public String getServerActivity() {
-        return serverActivity;
+    public String getName() {
+        return name;
     }
 }

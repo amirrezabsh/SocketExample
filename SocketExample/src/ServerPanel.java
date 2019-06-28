@@ -1,7 +1,6 @@
-import ServerLogic.Client;
 import ServerLogic.ClientManager;
+import ServerLogic.ClientMessage;
 import ServerLogic.Friend;
-import ServerLogic.Server;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -12,6 +11,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.nio.channels.SocketChannel;
 import java.security.Key;
 import java.util.ArrayList;
 
@@ -20,31 +20,35 @@ import static java.awt.image.ImageObserver.ABORT;
 public class ServerPanel extends JPanel implements ActionListener {
     private JPanel serverPanel;
     private int counter =0;
-    private ArrayList <Server> serverList = new ArrayList<>();
     private String title;
+    private String message;
+    private String [] messageParts;
     private int buttonIndex;
     private File musicFile;
     private JLabel label;
+//    private Server server = new Server();
+    private JButton friendButton;
     private JButton addFriend;
-    private Client client = new Client();
-    private ArrayList<Client> clientList = new ArrayList<>();
-    private Server friendServer;
-    private ArrayList<JButton> friendActibvity = new ArrayList<>();
+    private Friend friend;
+    private ClientMessage clientMessage = new ClientMessage();
+//    private ArrayList<Client> clientList = new ArrayList<>();
+//    private Server friendServ/er;
+//    private ArrayList<JButton> friendActibvity = new ArrayList<>();
     private Thread serverThread;
-    private ArrayList<ClientManager> clientManagerList = new ArrayList<>();
+    private SocketChannel socketChannel;
+//    private ArrayList<ClientManager> clientManagerList = new ArrayList<>();
 
     public ServerPanel() throws IOException, ClassNotFoundException, InterruptedException {
-        client.loadFreindsList();
         serverPanel = new JPanel();
         serverPanel.setLayout(new BoxLayout(serverPanel, BoxLayout.Y_AXIS));
         serverPanel.setBounds(40, 80, 200, 200);
         serverPanel.setBackground(Color.gray);
-//        JFrame jFrame = new JFrame();
-//        jFrame.setSize(400, 400);
-//        jFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-//        jFrame.setLayout(null);
-//        jFrame.add(serverPanel);
-//        jFrame.setVisible(true);
+        JFrame jFrame = new JFrame();
+        jFrame.setSize(400, 400);
+        jFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        jFrame.setLayout(null);
+        jFrame.add(serverPanel);
+        jFrame.setVisible(true);
         label = new JLabel();
         label.setText("Friends Activity");
         serverPanel.add(label);
@@ -53,9 +57,9 @@ public class ServerPanel extends JPanel implements ActionListener {
         serverPanel.add(addFriend);
     }
 
-//    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
-//        ServerPanel serverPanel = new ServerPanel();
-//    }
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+        ServerPanel serverPanel = new ServerPanel();
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -65,13 +69,13 @@ public class ServerPanel extends JPanel implements ActionListener {
     }
 
     public void createFrame() {
-        JFrame friendInformation = new JFrame("Enter your friend's information");
-        friendInformation.setSize(400, 500);
-        friendInformation.setVisible(true);
-        friendInformation.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        friendInformation.setBackground(Color.GREEN);
+        JFrame friendInfoFrame = new JFrame("Enter your friend's information");
+        friendInfoFrame.setSize(400, 500);
+        friendInfoFrame.setVisible(true);
+        friendInfoFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        friendInfoFrame.setBackground(Color.GREEN);
         JPanel friendInfoPanel = new JPanel();
-        friendInformation.add(friendInfoPanel);
+        friendInfoFrame.add(friendInfoPanel);
         friendInfoPanel.setBounds(40, 80, 200, 200);
         friendInfoPanel.setLayout(new BoxLayout(friendInfoPanel, BoxLayout.Y_AXIS));
         JLabel namelablel = new JLabel("Enter name:");
@@ -90,27 +94,38 @@ public class ServerPanel extends JPanel implements ActionListener {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    client.addFriend(name.getText(), ip.getText(), Integer.parseInt(port.getText()));
+                    friend= new Friend(name.getText(),Integer.parseInt(port.getText()),ip.getText());
                     if (name.getText().length() != 0 && ip.getText().length() != 0 && port.getText().length() != 0)
-                        friendInformation.dispose();
-                    friendActibvity.add(new JButton());
+                        friendInfoFrame.dispose();
+                    try {
+//                        socketChannel = client.createServerSocketChannel();
+                        createAskframe();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    } catch (ClassNotFoundException ex) {
+                        ex.printStackTrace();
+                    }
+                    //                        message=client.getMessage();
+
+
+//                    friendActibvity.add(new JButton());
 //                        serverList.add(new Server(client.getFriends().get(counter).getPort()));
 //                        clientList.add(new Client(client.getFriends().get(counter).getIp(), client.getFriends().get(counter).getPort()));
-                    clientManagerList.add(clientList.get(counter).getClientManager());
-                    serverList.get(counter).getThread().start();
-                    clientList.get(counter).getThread().start();
-                    friendActibvity.get(counter).setText(clientManagerList.get(counter).getServerActivity());
-                    friendActibvity.get(counter).setText("fuck you");
-                    serverPanel.add(friendActibvity.get(counter));
-                    buttonIndex = counter;
-                    counter++;
-                    friendActibvity.get(counter).addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            title = clientManagerList.get(buttonIndex).getTitle();
-                            musicFile = new File("C:\\Users\\ASUS\\Documents\\GitHub\\SocketExample\\Musics\\" + title + ".mp3");
-                        }
-                    });
+//                    clientManagerList.add(clientList.get(counter).getClientManager());
+//                    serverList.get(counter).getThread().start();
+//                    clientList.get(counter).getThread().start();
+//                    friendActibvity.get(counter).setText(clientManagerList.get(counter).getServerActivity());
+//                    friendActibvity.get(counter).setText("fuck you");
+//                    serverPanel.add(friendActibvity.get(counter));
+//                    buttonIndex = counter;
+//                    counter++;
+//                    friendActibvity.get(counter).addActionListener(new ActionListener() {
+//                        @Override
+//                        public void actionPerformed(ActionEvent e) {
+//                            title = clientManagerList.get(buttonIndex).getTitle();
+//                            musicFile = new File("C:\\Users\\ASUS\\Documents\\GitHub\\SocketExample\\Musics\\" + title + ".mp3");
+//                        }
+//                    });
                 }
             }
         };
@@ -118,7 +133,48 @@ public class ServerPanel extends JPanel implements ActionListener {
         ip.addKeyListener(enterAction);
         name.addKeyListener(enterAction);
     }
-
+    public void createAskframe () throws IOException, ClassNotFoundException {
+        JFrame jFrame = new JFrame("Choose an option:");
+        jFrame.setSize(400, 500);
+        jFrame.setVisible(true);
+        jFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        jFrame.setBackground(Color.GREEN);
+        JPanel jPanel=new JPanel();
+        jFrame.add(jPanel);
+        jPanel.setBounds(40, 80, 200, 200);
+        jPanel.setLayout(new BoxLayout(jPanel, BoxLayout.Y_AXIS));
+        ClientMessage clientMessage = new ClientMessage();
+        SocketChannel socketChannel = clientMessage.createServerSocketChannel();
+        message=clientMessage.getMessage(socketChannel);
+        friendButton = new JButton(message);
+        messageParts=message.split(":");
+        friendButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource()==friendButton){
+                    ClientFile clientFile = new ClientFile();
+                    SocketChannel socketChannel1 = clientFile.createServerSocketChannel();
+                    try {
+                        clientFile.readFileFromSocket(socketChannel1);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    } catch (ClassNotFoundException ex) {
+                        ex.printStackTrace();
+                    }
+                    jFrame.dispose();
+                }
+            }
+        });
+        JButton cancelButton = new JButton("I don't want this music");
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.dispose();
+            }
+        });
+        jPanel.add(cancelButton);
+        jPanel.add(friendButton);
+    }
     public File getMusicFile() {
         return musicFile;
     }
