@@ -1,4 +1,4 @@
-import ServerLogic.ServerManager;
+package ServerLogic;
 
 import javax.swing.*;
 import java.io.File;

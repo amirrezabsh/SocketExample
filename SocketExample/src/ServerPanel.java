@@ -1,8 +1,7 @@
-import ServerLogic.ClientManager;
+import ServerLogic.ClientFile;
 import ServerLogic.ClientMessage;
 import ServerLogic.Friend;
 
-import javax.accessibility.Accessible;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,10 +11,6 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.nio.channels.SocketChannel;
-import java.security.Key;
-import java.util.ArrayList;
-
-import static java.awt.image.ImageObserver.ABORT;
 
 public class ServerPanel extends JPanel implements ActionListener {
     private JPanel serverPanel;
