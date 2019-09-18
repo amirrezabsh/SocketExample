@@ -18,9 +18,12 @@ public class ClientMessage {
     private Thread thread;
 
 
-    public Thread getThread() {
-        return thread;
-    }
+    /**
+     * this method gets a string which is made of a name and a title
+     * @param sc it is the channel which we use to get the string from server
+     * @return it returns the message which we get from server
+     * @throws IOException it is thrown if anything happens in connection
+     */
     // baraye gerftn inke che kasi dare che chizi play mikone
     public String getMessage(SocketChannel sc) throws IOException {
         Charset charset = Charset.forName("ISO-8859-1");
@@ -30,16 +33,29 @@ public class ClientMessage {
         CharBuffer c = charset.decode(b);
         String message = c.toString();
         sc.close();
+        if (sc.isOpen() || sc.isConnected() || sc.isRegistered()) {
+            System.out.println("fuck");
+        }
+
         return message;
     }
+
+    /**
+     * this method creates a channel to get a message from server
+     * @param port it is the port of our server
+     * @return it returns the socket channel for getting message through it
+     */
 // baraye sakhtan kanal ertebati
     public SocketChannel createServerSocketChannel(int port) {
 
         ServerSocketChannel serverSocketChannel = null;
         SocketChannel socketChannel = null;
+        InetSocketAddress inetSocketAddress = null;
         try {
             serverSocketChannel = ServerSocketChannel.open();
-            serverSocketChannel.socket().bind(new InetSocketAddress(port));
+//            serverSocketChannel.configureBlocking(null);
+            inetSocketAddress = new InetSocketAddress(port);
+            serverSocketChannel.socket().bind(inetSocketAddress);
             socketChannel = serverSocketChannel.accept();
             System.out.println("Connection established...." + socketChannel.getRemoteAddress());
 

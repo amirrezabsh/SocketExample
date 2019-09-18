@@ -17,6 +17,7 @@ public class ClientFile {
         SocketChannel socketChannel = null;
         try {
             serverSocketChannel = ServerSocketChannel.open();
+//            serverSocketChannel.configureBlocking(false);
             serverSocketChannel.socket().bind(new InetSocketAddress((port+1)));
             socketChannel = serverSocketChannel.accept();
             System.out.println("Connection established...." + socketChannel.getRemoteAddress());
@@ -42,6 +43,9 @@ public class ClientFile {
             fileChannel.close();
             System.out.println("End of file reached..Closing channel");
             socketChannel.close();
+            if (socketChannel.isOpen() || socketChannel.isConnected() || socketChannel.isRegistered()){
+                System.out.println("fuck");
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

@@ -29,6 +29,13 @@ public class ServerPanel extends JPanel implements ActionListener {
     private ClientMessage clientMessage = new ClientMessage();
     private Thread serverThread;
     private SocketChannel socketChannel;
+
+    /**
+     * it is a constructor to create a panel and we get
+     * @throws IOException
+     * @throws ClassNotFoundException
+     * @throws InterruptedException
+     */
     // inja avalin paneli ke mibini sakhte mishe ya hamon panel asli
     public ServerPanel() throws IOException, ClassNotFoundException, InterruptedException {
         serverPanel = new JPanel();
@@ -36,12 +43,12 @@ public class ServerPanel extends JPanel implements ActionListener {
         serverPanel.setBounds(40, 80, 200, 200);
         serverPanel.setBackground(Color.gray);
         // ina baraye teste
-//        jFrame = new JFrame();
-//        jFrame.setSize(400, 400);
-//        jFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-//        jFrame.setLayout(null);
-//        jFrame.add(serverPanel);
-//        jFrame.setVisible(true);
+        jFrame = new JFrame();
+        jFrame.setSize(400, 400);
+        jFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        jFrame.setLayout(null);
+        jFrame.add(serverPanel);
+        jFrame.setVisible(true);
         label = new JLabel();
         label.setText("Friends Activity");
         serverPanel.add(label);
@@ -51,9 +58,9 @@ public class ServerPanel extends JPanel implements ActionListener {
         jFrame.revalidate();
     }
 //ina baraye teste
-//    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
-//        Server.ServerPanel serverPanel = new Server.ServerPanel();
-//    }
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+        Server.ServerPanel serverPanel = new Server.ServerPanel();
+    }
 
     @Override
     // inja action listener add friend sakhte mishe ke baes mishe ye panel dg baraye vared kardan etelaat friend baz beshe
@@ -136,6 +143,7 @@ public class ServerPanel extends JPanel implements ActionListener {
         jPanel.setBounds(40, 80, 200, 200);
         jPanel.setLayout(new BoxLayout(jPanel, BoxLayout.Y_AXIS));
         ClientMessage clientMessage = new ClientMessage();
+        System.out.println(friend.getPort());
         SocketChannel socketChannel = clientMessage.createServerSocketChannel(friend.getPort());
         //inja bayad ServerMessage ejra she
         message = clientMessage.getMessage(socketChannel);
@@ -148,8 +156,11 @@ public class ServerPanel extends JPanel implements ActionListener {
                 if (e.getSource() == friendButton) {
                     ClientFile clientFile = new ClientFile();
                     SocketChannel socketChannel1 = clientFile.createServerSocketChannel(friend.getPort());
+
                     // inja bayad ServerFile ejra she
                     counter++;
+                    int port = friend.getPort()+counter;
+                    friend.setPort(port);
                     clientFile.setCounter(counter);
                     try {
                         clientFile.readFileFromSocket(socketChannel1);
